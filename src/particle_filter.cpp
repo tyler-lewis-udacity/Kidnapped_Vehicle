@@ -101,7 +101,7 @@ void ParticleFilter::dataAssociation(std::vector<LandmarkObs> predicted, std::ve
 	unsigned int n_observations = observations.size();
   unsigned int n_predictions = predicted.size();
 
-  for(int i=0; i < n_observations; i++) { 
+  for(unsigned int i=0; i < n_observations; i++) { 
 
     // initialize minimum distance
     double min_distance = numeric_limits<double>::max();
@@ -109,7 +109,7 @@ void ParticleFilter::dataAssociation(std::vector<LandmarkObs> predicted, std::ve
     // initialize map id
     int map_id = -1;
 
-    for (int j=0; j < n_predictions; j++) {
+    for(unsigned int j=0; j < n_predictions; j++) {
 
       double x_distance = observations[i].x - predicted[j].x;
       double y_distance = observations[i].y - predicted[j].y;
@@ -254,6 +254,7 @@ Particle ParticleFilter::SetAssociations(Particle& particle, const std::vector<i
     particle.associations = associations;
     particle.sense_x = sense_x;
     particle.sense_y = sense_y;
+    return particle;
 }
 
 string ParticleFilter::getAssociations(Particle best)
